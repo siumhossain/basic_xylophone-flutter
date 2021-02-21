@@ -1,7 +1,7 @@
 # xylophone
 
 A basic xylophone.which will genarate six different sound from different six key 
-
+<img src="https://m.media-amazon.com/images/I/51qQcQrNfFL._SL1000_.jpg">
 ## Getting Started
 
 This project is a starting point for a Flutter application.
