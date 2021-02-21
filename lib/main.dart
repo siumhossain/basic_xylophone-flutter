@@ -1,6 +1,6 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(MaterialApp(
   home: Scaffold(
@@ -12,59 +12,49 @@ void main() => runApp(MaterialApp(
     backgroundColor: Colors.grey[800],
   ),
 ));
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
 
-class _MainPageState extends State<MainPage> {
-  void playTone(int i){
+class MainPage extends StatelessWidget {
+  void playSound(int soundNumber) {
     final player = AudioCache();
-    player.play('note$i.wav');
+    player.play('note$soundNumber.wav');
   }
+
+  Expanded buildKey({Color color, int soundNumber}) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playSound(soundNumber);
+        },
+      ),
+    );
+  }
+
   @override
-
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(1);
-
-        }, child: Text('1')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(2);
-
-        }, child: Text('2')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(3);
-
-        }, child: Text('3')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(4);
-
-        }, child: Text('4')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(5);
-
-        }, child: Text('5')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(6);
-
-        }, child: Text('6')),
-        FlatButton(onPressed: (){
-          //print('hello');
-          playTone(7);
-
-        }, child: Text('7')),
-
-
-      ],
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              buildKey(color: Colors.red, soundNumber: 1),
+              buildKey(color: Colors.orange, soundNumber: 2),
+              buildKey(color: Colors.yellow, soundNumber: 3),
+              buildKey(color: Colors.green, soundNumber: 4),
+              buildKey(color: Colors.teal, soundNumber: 5),
+              buildKey(color: Colors.blue, soundNumber: 6),
+              buildKey(color: Colors.purple, soundNumber: 7),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
+
+
+
+
+
